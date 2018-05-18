@@ -1,0 +1,43 @@
+.sheets-container {
+  box-sizing: border-box;
+}
+
+.sheets-container * {
+  box-sizing: inherit;
+}
+
+.sheets--container, .sheets--rows, .sheets--header, .sheets--row {
+  display: flex;
+}
+
+.sheets-container {
+  overflow: auto;
+  max-height: 100vh;
+}
+
+.sheets--container, .sheets--rows {
+  flex-direction: column;
+}
+
+.sheets--header {
+  font-weight: bold;
+}
+
+.sheets--column {
+  text-align: center;
+  border-bottom: 1px solid gainsboro;
+}
+
+.sheets--column input {
+  border: 2px solid transparent;
+}
+.sheets--column input:focus {
+  border: 2px solid #0031e2;
+}
+.sheets--header-column {
+  text-align: center;
+  border-bottom: 1px solid gray;
+}
+.sheets--column:not(:last-child), .sheets--header-column:not(:last-child) {
+  border-right: 1px solid gainsboro;
+}
