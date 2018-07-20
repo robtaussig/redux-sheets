@@ -6,26 +6,33 @@
   box-sizing: inherit;
 }
 
-.sheets--container, .sheets--rows, .sheets--header, .sheets--row {
+.sheets--header, .sheets--row {
   display: flex;
 }
 
 .sheets-container {
-  overflow: auto;
-  max-height: 100vh;
   border: 1px solid #A2AEBB;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: [header] 25px [body] 1fr;
+  height: 100%;
 }
 
-.sheets--container, .sheets--rows {
-  flex-direction: column;  
+.sheets--rows {
+  flex-direction: column; 
+  display: flex;
+  grid-row: body;
+  overflow: auto;
 }
 
 .sheets--header {
+  grid-row: header;
   font-weight: bold;
   border-left: 1px solid gainsboro;
   border-top: 1px solid gainsboro;
   border-right: 1px solid gainsboro;
   background-color: #eaeaea;
+  flex: 0 0 25px;
 }
 
 .sheets--column {
@@ -34,6 +41,10 @@
 
 .sheets--row:not(:last-child) {
   border-bottom: 1px solid gainsboro;
+}
+
+.sheets--row {
+  min-height: 25px;
 }
 
 .sheets--column input {
