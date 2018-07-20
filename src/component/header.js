@@ -9,8 +9,8 @@ export class Header extends React.Component {
   }
 
   render() {
-    const { header, preferences } = this.props;
-    const { columnWidth } = preferences;
+    const { header } = this.props;
+
     return (
       <div className={'sheets--header'}>
         {header.map((column, idx) => {
@@ -18,7 +18,6 @@ export class Header extends React.Component {
             <HeaderColumn 
               key={`${idx}-header`} 
               column={column}
-              width={columnWidth}  
             />
           );
         })}
@@ -26,6 +25,7 @@ export class Header extends React.Component {
     );
   }
 }
+
 const mapStateToProps = (state, ownProps) => {
   return {
     header: state.header,
@@ -33,12 +33,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    dispatch1: () => {
-      dispatch();
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps)(Header);

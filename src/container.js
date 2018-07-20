@@ -14,12 +14,12 @@ export class Container extends React.Component {
 
   render() {
     const props = this.props;
-    const { data, maxHeight, maxWidth } = props;
+    const { data } = props;
 
     return (
-      <div style={{ maxHeight, maxWidth }} className={'sheets-container'}>
+      <div className={'sheets-container'}>
         <Header/>
-        <Rows maxWidth={maxWidth ? Math.min(maxWidth, window.innerWidth) : maxWidth}/>
+        <Rows/>
       </div>
     );
   }

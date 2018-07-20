@@ -13,18 +13,26 @@
 .sheets-container {
   overflow: auto;
   max-height: 100vh;
+  border: 1px solid #A2AEBB;
 }
 
 .sheets--container, .sheets--rows {
-  flex-direction: column;
+  flex-direction: column;  
 }
 
 .sheets--header {
   font-weight: bold;
+  border-left: 1px solid gainsboro;
+  border-top: 1px solid gainsboro;
+  border-right: 1px solid gainsboro;
+  background-color: #eaeaea;
 }
 
 .sheets--column {
   text-align: center;
+}
+
+.sheets--row:not(:last-child) {
   border-bottom: 1px solid gainsboro;
 }
 

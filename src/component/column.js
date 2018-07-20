@@ -1,7 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-export class Column extends React.Component {
+export default class Column extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,9 +17,8 @@ export class Column extends React.Component {
   }
 
   render() {
-    const { column, width } = this.props;
     return (
-      <div style={{ width: width }} className={`sheets--column`} >
+      <div className={`sheets--column`} >
         <input 
           type={'text'}
           style={{ width: '100%' }}                    
@@ -31,19 +29,3 @@ export class Column extends React.Component {
     );
   }
 }
-
-const mapStateToProps = (state, ownProps) => {
-  return {
-    
-  };
-};
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    dispatch1: () => {
-      dispatch();
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Column);
