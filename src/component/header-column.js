@@ -6,9 +6,14 @@ export default class HeaderColumn extends React.Component {
   }
 
   render() {
-    const { column } = this.props;
+    const { column, onClickHeader, index } = this.props;
     return (
-      <div className={`sheets--header-column`} >
+      <div
+        className={`sheets--header-column`}
+        onClick={()=>{
+          onClickHeader(index);
+        }}
+      >
         <span>{column}</span>
       </div>
     );

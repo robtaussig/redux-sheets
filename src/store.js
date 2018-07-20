@@ -4,6 +4,7 @@ import {
   SELECT_CELL,
   UPDATE_SELECTION,
   CHANGE_CELL_VALUE,
+  CLICK_HEADER,
 } from './actions';
 
 const layout = (state = [], action) => {
@@ -56,6 +57,9 @@ const selectedCellRow = (state = false, action) => {
   case SELECT_CELL:
     return action.payload.row;
 
+  case CLICK_HEADER:
+    return false;
+
   default:
     return state;
   }
@@ -86,6 +90,7 @@ const selectedCellRowEnd = (state = false, action) => {
   case UPDATE_SELECTION:
     return action.payload.rowEnd;
 
+  case CLICK_HEADER:
   case SELECT_CELL:
     return false;
 
@@ -109,8 +114,22 @@ const selectedCellColumnEnd = (state = false, action) => {
   case UPDATE_SELECTION:
     return action.payload.columnEnd;
 
+  case CLICK_HEADER:
   case SELECT_CELL:
     return false;
+  default:
+    return state;
+  }
+};
+
+const selectedHeader = (state = false, action) => {
+  switch (action.type) {
+  case CLICK_HEADER:
+    return action.payload;
+  
+  case SELECT_CELL:
+    return false;
+
   default:
     return state;
   }
@@ -127,6 +146,7 @@ const store = createStore(
     selectedCellRowEnd,
     selectedCellColumnStart,
     selectedCellColumnEnd,
+    selectedHeader,
   })
 );
 

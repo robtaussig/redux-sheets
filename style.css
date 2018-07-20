@@ -39,6 +39,7 @@
 .sheets--column {
   text-align: center;
   flex: 1;
+  overflow: hidden;
 }
 
 .sheets--cell-value, .sheets--header-column {

@@ -6,7 +6,7 @@ import {
 } from '../actions';
 const generateStyle = (props, state) => {
   const { isEditing } = state;
-  const { isSelected, isInSelectionRange } = props;
+  const { isSelected, isInSelectionRange, isWithinSelectedHeaderRange } = props;
   const style = {
     height: '100%',
   };
@@ -18,6 +18,9 @@ const generateStyle = (props, state) => {
   }
   if (isInSelectionRange) {
     style.backgroundColor = 'aliceblue';
+  }
+  if (isWithinSelectedHeaderRange) {
+    style.backgroundColor = 'gainsboro';
   }
 
   return style;
@@ -150,6 +153,7 @@ const mapStateToProps = (state, ownProps) => {
       state.selectedCellColumnStart,
       state.selectedCellColumnEnd
     )(ownProps.row, ownProps.column),
+    isWithinSelectedHeaderRange: state.selectedHeader === ownProps.column,
   };
 };
 

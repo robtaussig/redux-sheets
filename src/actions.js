@@ -2,6 +2,7 @@ export const GENERATE_LAYOUT = 'GENERATE_LAYOUT';
 export const SELECT_CELL = 'SELECT_CELL';
 export const UPDATE_SELECTION = 'UPDATE_SELECTION';
 export const CHANGE_CELL_VALUE = 'CHANGE_CELL_VALUE';
+export const CLICK_HEADER = 'CLICK_HEADER';
 
 export const generateLayout = (data) => ({
   type: GENERATE_LAYOUT,
@@ -27,4 +28,9 @@ export const updateSelection = (rowEnd, columnEnd) => ({
   payload: {
     rowEnd, columnEnd,
   }
+});
+
+export const clickHeader = headerIndex => ({
+  type: CLICK_HEADER,
+  payload: headerIndex,
 });
