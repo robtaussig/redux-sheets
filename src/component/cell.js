@@ -7,7 +7,9 @@ import {
 const generateStyle = (props, state) => {
   const { isEditing } = state;
   const { isSelected, isInSelectionRange } = props;
-  const style = {};
+  const style = {
+    height: '100%',
+  };
   if (!isEditing && isSelected) {
     style.border = '1px solid blue';
     style.backgroundColor = 'aliceblue';
