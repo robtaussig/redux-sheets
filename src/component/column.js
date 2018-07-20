@@ -1,29 +1,23 @@
 import React from 'react';
+import Cell from './cell';
 
 export default class Column extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       value: props.column,
-      focused: false
     };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({
-      value: event.target.value
-    });
   }
 
   render() {
+    const { column, row, index, onMouseOver } = this.props;
     return (
       <div className={`sheets--column`} >
-        <input 
-          type={'text'}
-          style={{ width: '100%' }}                    
-          value={this.state.value} 
-          onChange={this.handleChange}
+        <Cell
+          value={column}
+          row={row}
+          column={index}
+          onMouseOver={onMouseOver}
         />
       </div>
     );

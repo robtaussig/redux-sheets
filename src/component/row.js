@@ -9,7 +9,7 @@ export class Row extends React.Component {
   }
 
   render() {
-    const { row } = this.props;
+    const { row, index, onMouseOver } = this.props;
 
     return (
       <div className={'sheets--row'}>
@@ -17,8 +17,10 @@ export class Row extends React.Component {
           return (
             <Column
               key={`${idx}-column`}
-              index={idx} 
+              index={idx}
+              row={index}
               column={column}
+              onMouseOver={onMouseOver}
             />
           );
         })}

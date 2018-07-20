@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
-  generateLayout
+  generateLayout,
+  updateSelection,
 } from './actions';
 import Header from './component/header';
 import Rows from './component/rows';
@@ -9,17 +10,44 @@ import Rows from './component/rows';
 export class Container extends React.Component {
   constructor(props) {
     super(props);
-    props.generateLayout(props.data);    
+    this.state = {
+      isMouseDown: false,
+    };
+    props.generateLayout(props.data);
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.handleMouseUp = this.handleMouseUp.bind(this);
+    this.handleMouseOver = this.handleMouseOver.bind(this);
+  }
+
+  handleMouseDown(event) {
+    this.setState({
+      isMouseDown: true,
+    });
+  }
+
+  handleMouseUp(event) {
+    this.setState({
+      isMouseDown: false,
+    });
+  }
+
+  handleMouseOver(row, column) {
+    if (this.state.isMouseDown) {
+      this.props.updateSelection(row, column);
+    }
   }
 
   render() {
     const props = this.props;
-    const { data } = props;
-
+    
     return (
-      <div className={'sheets-container'}>
+      <div
+        className={'sheets-container'}
+        onMouseDown={this.handleMouseDown}
+        onMouseUp={this.handleMouseUp}  
+      >
         <Header/>
-        <Rows/>
+        <Rows onMouseOver={this.handleMouseOver}/>
       </div>
     );
   }
@@ -27,13 +55,14 @@ export class Container extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    prop: state.prop
+    
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    generateLayout: (data) => dispatch(generateLayout(data))
+    generateLayout: (data) => dispatch(generateLayout(data)),
+    updateSelection: (rowEnd, columnEnd) => dispatch(updateSelection(rowEnd, columnEnd))
   };
 };
 
